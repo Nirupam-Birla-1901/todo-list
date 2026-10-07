@@ -37,12 +37,47 @@ body {
   border-radius: 18px;
   box-shadow: var(--shadow);
   padding: 28px 24px;
+  animation: fadeInUp 0.45s ease-out;
 }
 
 h1 {
   margin: 0 0 20px;
   text-align: center;
   font-size: clamp(2rem, 4vw, 2.4rem);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes pulseText {
+  0% {
+    transform: scale(1);
+  }
+  35% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .todo-form {
@@ -72,11 +107,16 @@ button {
   font: inherit;
   transition:
     transform 0.15s ease,
-    opacity 0.15s ease;
+    opacity 0.15s ease,
+    box-shadow 0.2s ease;
 }
 
 button:hover {
   transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0) scale(0.98);
 }
 
 .todo-form button {
@@ -84,10 +124,12 @@ button:hover {
   color: white;
   padding: 12px 18px;
   font-weight: 600;
+  box-shadow: 0 8px 18px rgba(67, 97, 238, 0.18);
 }
 
 .todo-form button:hover {
   background: var(--primary-dark);
+  box-shadow: 0 10px 20px rgba(67, 97, 238, 0.24);
 }
 
 .toolbar {
@@ -97,6 +139,14 @@ button:hover {
   margin-bottom: 14px;
   color: var(--muted);
   font-size: 0.9rem;
+}
+
+#task-count {
+  transition: transform 0.2s ease;
+}
+
+#task-count.pulse {
+  animation: pulseText 0.24s ease;
 }
 
 .secondary {
@@ -122,6 +172,16 @@ button:hover {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 12px 10px;
+  animation: slideIn 0.28s ease-out both;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.todo-item:hover {
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.04);
+  transform: translateY(-1px);
 }
 
 .todo-checkbox {
@@ -129,11 +189,19 @@ button:hover {
   height: 18px;
   accent-color: var(--done);
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.todo-checkbox:checked {
+  transform: scale(1.08);
 }
 
 .todo-text {
   flex: 1;
   word-break: break-word;
+  transition:
+    color 0.2s ease,
+    opacity 0.2s ease;
 }
 
 .todo-item.completed .todo-text {
@@ -147,6 +215,14 @@ button:hover {
   width: 32px;
   height: 32px;
   font-size: 1.1rem;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+  background: rgba(239, 71, 111, 0.14);
+  transform: scale(1.08);
 }
 
 .empty-state {
@@ -156,6 +232,7 @@ button:hover {
   text-align: center;
   padding: 22px 16px;
   background: #fafcff;
+  animation: fadeInUp 0.3s ease-out;
 }
 
 @media (max-width: 480px) {

@@ -21,9 +21,10 @@ function renderTodos() {
     emptyState.textContent = "No tasks yet. Add one above!";
     todoList.appendChild(emptyState);
   } else {
-    todos.forEach((todo) => {
+    todos.forEach((todo, index) => {
       const item = document.createElement("li");
       item.className = `todo-item ${todo.completed ? "completed" : ""}`;
+      item.style.animationDelay = `${index * 40}ms`;
 
       const checkbox = document.createElement("input");
       checkbox.type = "checkbox";
@@ -52,6 +53,9 @@ function renderTodos() {
 
   const remaining = todos.filter((todo) => !todo.completed).length;
   taskCount.textContent = `${remaining} task${remaining === 1 ? "" : "s"} left`;
+  taskCount.classList.remove("pulse");
+  void taskCount.offsetWidth;
+  taskCount.classList.add("pulse");
 }
 
 function addTodo(text) {
