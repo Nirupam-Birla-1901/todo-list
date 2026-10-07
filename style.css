@@ -3,6 +3,10 @@
   --card: #ffffff;
   --primary: #4361ee;
   --primary-dark: #2d47c7;
+  --nav-bg: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
+  --nav-text: #eaf2ff;
+  --nav-muted: rgba(234, 242, 255, 0.8);
+  --nav-hover: rgba(255, 255, 255, 0.15);
   --danger: #ef476f;
   --text: #1d2a39;
   --muted: #65748b;
@@ -30,32 +34,33 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1100px;
-  margin: 20px auto 0;
+  width: min(1100px, calc(100% - 24px));
+  margin: 16px auto 0;
   padding: 14px 22px;
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(223, 231, 241, 0.9);
-  border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
-  backdrop-filter: blur(14px);
+  background: var(--nav-bg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  box-shadow: 0 14px 30px rgba(37, 99, 235, 0.22);
+  box-sizing: border-box;
 }
 
 .nav-brand {
   font-size: 1.2rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
-  color: var(--primary-dark);
+  letter-spacing: 0.06em;
+  color: var(--nav-text);
+  text-transform: uppercase;
 }
 
 .nav-links {
   display: flex;
-  gap: 10px;
+  gap: 8px;
   align-items: center;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: var(--muted);
+  color: var(--nav-muted);
   font-weight: 600;
   padding: 8px 12px;
   border-radius: 10px;
@@ -67,8 +72,8 @@ body {
 
 .nav-links a:hover,
 .nav-links a.active {
-  background: #edf2ff;
-  color: var(--primary-dark);
+  background: var(--nav-hover);
+  color: var(--nav-text);
   transform: translateY(-1px);
 }
 
@@ -285,6 +290,25 @@ button:active {
 }
 
 @media (max-width: 480px) {
+  .navbar {
+    width: calc(100% - 18px);
+    padding: 12px 14px;
+  }
+
+  .nav-brand {
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+  }
+
+  .nav-links {
+    gap: 4px;
+  }
+
+  .nav-links a {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+
   .todo-card {
     padding: 22px 16px;
   }
