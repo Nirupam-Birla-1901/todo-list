@@ -23,8 +23,57 @@ body {
   color: var(--text);
 }
 
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 20px auto 0;
+  padding: 14px 22px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(223, 231, 241, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.04);
+  backdrop-filter: blur(14px);
+}
+
+.nav-brand {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--primary-dark);
+}
+
+.nav-links {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--muted);
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: #edf2ff;
+  color: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
 .app {
-  min-height: 100vh;
+  min-height: calc(100vh - 110px);
   display: grid;
   place-items: center;
   padding: 24px;
