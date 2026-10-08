@@ -1,4 +1,4 @@
-# Todo List
+# Todo List App
 
 A lightweight browser-based todo list with add, complete, delete, and clear-completed features.
 
